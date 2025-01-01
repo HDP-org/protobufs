@@ -1,0 +1,3 @@
+packages/c/*
+packages/ts/lib/*
+!packages/c/library.properties
