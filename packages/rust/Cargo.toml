@@ -1,5 +1,5 @@
 [package]
-name = "HDP_porotobufs"
+name = "hdp_protobufs"
 edition = "2021"
 version = "__PACKAGE_VERSION__"
 description = "HDP Protobuf definitions"
