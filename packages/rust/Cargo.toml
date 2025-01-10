@@ -1,0 +1,15 @@
+[package]
+name = "HDP_porotobufs"
+edition = "2021"
+version = "__PACKAGE_VERSION__"
+description = "HDP Protobuf definitions"
+repository = "https://github.com/HDP-org/protobufs"
+license-file = "LICENSE"
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+]
+
+[dependencies]
+prost = "0.13.3"
+prost-types = "0.13.3"
