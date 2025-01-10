@@ -59,3 +59,20 @@ jobs:
           deno-version: rc
       - name: Publish to JSR
         run: deno publish
+  publish-cargo:
+    runs-on: ubuntu-24.04
+    needs: codegen
+    steps:
+      - name: Download Rust code
+        uses: actions/download-artifact@v4
+        with:
+          name: rust_code
+      - name: Set up Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Check Library
+        run: cargo check
+      - name: Publish to crates.io
+        uses: katyo/publish-crates@v2
+        with:
+            registry-token: ${{ secrets.CARGO_TOKEN }}
+            ignore-unpublished-changes: true
