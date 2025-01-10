@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package HDP.worker;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "worker/hydroponic.proto";
+import "worker/irrigation.proto";
+import "worker/weather.proto";
+
+message Registration {
+
+    string id = 1;
+    oneof type {
+        google.protobuf.Empty weather = 2;
+        HDP.worker.irrigation.Inventory irrigation = 3;
+        HDP.worker.hydroponic.Inventory hydroponic = 4;
+    }
+
+    // change termanology such as: waterWorker (responsible for dossing water) not used in irrigation
+    //
+    // user creates a system
+    // workers self-register with controller
+    // there may be workers from several different systems
+    // each worker by default is unclaimed
+    // the user can claim workers for a system
+    //
+    // each system can have a type (only changes things client & server side, not worker side)
+    // once worker is registered and claimed, a config is sent to the worker
+    // otherwise it will be stay in "waiting for config"
+    // if new config is recieved, reset worker with new config
+    // workers don't persist state, just their ID
+}

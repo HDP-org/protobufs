@@ -1,5 +1,5 @@
 {
-  "name": "@sachaw/hydroponics_protobufs",
+  "name": "@sachaw/HDP_protobufs",
   "version": "__PACKAGE_VERSION__",
   "exports": {
     ".": "./mod.ts"

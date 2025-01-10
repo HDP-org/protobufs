@@ -1,4 +1,4 @@
-name: Publish to JSR
+name: Publish to Cargo & JSR
 
 on: push
 
@@ -19,10 +19,19 @@ jobs:
       - name: Set Package Versions
         run: |
           sed -i "s/__PACKAGE_VERSION__/$(cat version)/g" packages/ts/deno.json
+          sed -i "s/__PACKAGE_VERSION__/$(cat version)/g" packages/rust/Cargo.toml
+          sed -i "s/__PACKAGE_VERSION__/$(cat version)/g" packages/c/library.properties
       - name: Copy license & README
         run: |
           cp LICENSE packages/ts
+          cp LICENSE packages/rust
           cp README.md packages/ts
+          cp README.md packages/rust
+      - name: Upload Rust code
+        uses: actions/upload-artifact@v4
+        with:
+          name: rust_code
+          path: packages/rust
       - name: Upload TypeScript code
         uses: actions/upload-artifact@v4
         with:

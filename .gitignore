@@ -1,3 +1,5 @@
 packages/c/*
 packages/ts/lib/*
 !packages/c/library.properties
+packages/rust/src/generated/*
+packages/rust/target

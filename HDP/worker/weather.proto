@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package HDP.worker.weather;
+
+import "google/protobuf/timestamp.proto";
+
+message WeatherMeassurement {
+  google.protobuf.Timestamp timestamp = 1;
+
+  // Device identifier
+  string device_id = 2;
+
+  // Environmental measurements
+  float temperature_celsius = 3;     // -40°C to +85°C
+  float relative_humidity = 4;       // 0-100%
+  float pressure_hpa = 5;           // 300-1250 hPa
+  uint32 co2_ppm = 6;              // 400-10000 ppm
+
+  // Wind measurements
+  float wind_speed_ms = 7;          // 0-75 m/s
+  float wind_direction_degrees = 8;  // 0-360°
+
+  // Particulate matter
+  uint32 pm25_ugm3 = 9;            // 0-1000 µg/m³
+  uint32 pm10_ugm3 = 10;           // 0-1000 µg/m³
+
+  // Ambient conditions
+  float rainfall_mmh = 11;          // 0-200 mm/h
+  uint32 light_intensity_lux = 12;  // 0-200,000 Lux
+}
+
+message WeatherConfig {
+
+}

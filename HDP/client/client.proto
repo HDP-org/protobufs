@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package HDP.client;
+
+import "worker/worker.proto";
+
+message UnclaimedWorkers {
+    repeated HDP.worker.Registration workers = 1;
+}
+
+message System {
+    string id = 1;
+    string name = 2;
+}

@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package HDP.worker.irrigation;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+/**
+ * Configuration for device
+ */
+message Config {
+
+}
+
+/**
+ * Action to perform live
+ */
+message Command {
+    string id = 1;
+
+    message FixedOveride {
+        bool open = 1;
+    }
+
+    message TimedOveride {
+        google.protobuf.Duration duration = 1;
+    }
+
+    oneof payload {
+        FixedOveride fixed = 2;
+        TimedOveride timed = 3;
+
+    }
+}
+
+/**
+ * List of attached peripheral devices presented during registration
+ */
+message Inventory {
+  repeated string solenoids = 1;
+  string flow_meter = 2;
+}
+
+/**
+ * Continuous reporting of peripheral devices
+ */
+message IrrigationState {
+  message SolenoidState {
+
+    /**
+    * Device ID
+    */
+    string id = 1;
+
+    /**
+     * Solenoid State
+     */
+    bool open = 2;
+  }
+
+  message FlowMeterState {
+
+    /**
+     * Device ID
+     */
+    string id = 1;
+
+    /**
+     * Flow rate in L/s
+     */
+    uint32 rate = 2;
+
+    /**
+     * Litres since last reading
+     */
+    uint32 litres = 3;
+  }
+
+  repeated SolenoidState solenoids = 1;
+  FlowMeterState flow_meter = 2;
+}

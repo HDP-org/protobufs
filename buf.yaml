@@ -1,4 +1,4 @@
 version: v2
 modules:
-  - path: hydroponics
-    name: buf.build/hydroponics/protobufs
+  - path: HDP
+    name: buf.build/HDP/protobufs
