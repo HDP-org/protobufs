@@ -4,6 +4,7 @@ package HDP.worker.irrigation;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
+import "worker/common.proto";
 
 /**
  * Configuration for device
@@ -31,14 +32,6 @@ message Command {
         TimedOveride timed = 3;
 
     }
-}
-
-/**
- * List of attached peripheral devices presented during registration
- */
-message Inventory {
-  repeated string solenoids = 1;
-  string flow_meter = 2;
 }
 
 /**

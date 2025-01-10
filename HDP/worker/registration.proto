@@ -1,21 +1,21 @@
 syntax = "proto3";
 
-package HDP.worker;
+package HDP.worker.registration;
 
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/empty.proto";
-import "worker/hydroponic.proto";
-import "worker/irrigation.proto";
-import "worker/weather.proto";
+import "worker/common.proto";
 
-message Registration {
+enum WorkerType {
+    HYDROPONIC = 0;
+    IRRIGATION = 1;
+    WEATHER = 2;
+}
+
+message Payload {
 
     string id = 1;
-    oneof type {
-        google.protobuf.Empty weather = 2;
-        HDP.worker.irrigation.Inventory irrigation = 3;
-        HDP.worker.hydroponic.Inventory hydroponic = 4;
-    }
+    WorkerType type = 2;
+    HDP.worker.common.Inventory inventory = 3;
 
     // change termanology such as: waterWorker (responsible for dossing water) not used in irrigation
     //
@@ -30,4 +30,7 @@ message Registration {
     // otherwise it will be stay in "waiting for config"
     // if new config is recieved, reset worker with new config
     // workers don't persist state, just their ID
+    //
+    // Workers register a service "HDP.worker" with an ID (header?) server keeps track of the pairing between session id's and worker id's
+    // worker registers an endpoint "config" which accepts new configurations
 }

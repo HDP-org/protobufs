@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package HDP.worker.common;
+
+import "google/protobuf/timestamp.proto";
+
+message Peripheral {
+    enum PeripheralType {
+        EZO_PH = 0;
+        EZO_ORP = 1;
+        EZO_DO = 2;
+        EZO_EC = 3;
+        EZO_RTD = 4;
+        EZO_FLO = 5;
+        EZO_CO2 = 6;
+        EZO_O2 = 7;
+        EZO_HUM = 8;
+        EZO_PRS = 9;
+        EZO_RGB = 10;
+        EZO_PMP = 11;
+        RELAY = 12;
+        FLOW = 13;
+    }
+    string id = 1;
+    string name = 2;
+    PeripheralType type = 3;
+}
+
+/**
+ * List of attached peripheral devices presented during registration
+ */
+message Inventory {
+    repeated Peripheral peripherals = 1;
+}

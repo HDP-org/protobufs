@@ -3,44 +3,36 @@ syntax = "proto3";
 package HDP.worker.hydroponic;
 
 import "google/protobuf/timestamp.proto";
+import "worker/common.proto";
 
+/**
+ * Configuration for device
+ */
 message Config {
     double target_ph = 1;
 }
 
-message Inventory {
-    enum SensorType {
-        PH = 0;
-        ORP = 1;
-        DO = 2;
-        EC = 3;
-        RTD = 4;
-        FLO = 5;
-        CO2 = 6;
-        O2 = 7;
-        HUM = 8;
-        PRS = 9;
-        PMP = 10;
-        RGB = 11;
-    }
+/**
+ * Action to perform live
+ */
+message Command {
 
-    message Sensor {
-        uint32 address = 1;
-        SensorType type = 2;
-    }
-
-    repeated Sensor sensors = 1;
-    repeated string pumps = 2;
 }
 
+/**
+ * Continuous reporting of peripheral devices
+ */
 message State {
     message SensorState {
         string id = 1;
-        uint32 reading = 2;
+        repeated uint32 reading = 2;
     }
 
     message PumpState {
         string id = 1;
 
     }
+
+    repeated SensorState sensors = 1;
+    repeated PumpState pumps = 2;
 }

@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package HDP.client;
 
-import "worker/worker.proto";
+import "worker/registration.proto";
 
 message UnclaimedWorkers {
-    repeated HDP.worker.Registration workers = 1;
+    repeated HDP.worker.registration.Payload workers = 1;
 }
 
 message System {
