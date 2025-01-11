@@ -4,7 +4,7 @@ package HDP.worker.weather;
 
 import "google/protobuf/timestamp.proto";
 
-message WeatherMeassurement {
+message WeatherMeasurement {
   google.protobuf.Timestamp timestamp = 1;
 
   // Device identifier
