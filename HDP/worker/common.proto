@@ -5,7 +5,7 @@ package HDP.worker.common;
 import "google/protobuf/timestamp.proto";
 
 message Peripheral {
-    enum PeripheralType {
+    enum Type {
         EZO_PH = 0;
         EZO_ORP = 1;
         EZO_DO = 2;
@@ -23,22 +23,22 @@ message Peripheral {
     }
     string id = 1;
     string name = 2;
-    PeripheralType type = 3;
+    Type type = 3;
 }
 
 message Inventory {
     repeated Peripheral peripherals = 1;
 }
 
-
-enum WorkerType {
-    HYDROPONIC = 0;
-    IRRIGATION = 1;
-    WEATHER = 2;
-}
-
 message Worker {
+    enum Type {
+        HYDROPONIC = 0;
+        IRRIGATION = 1;
+        WEATHER = 2;
+    }
+
     string id = 1;
-    WorkerType type = 2;
-    Inventory inventory = 3;
+    string name = 2;
+    Type type = 3;
+    Inventory inventory = 4;
 }
