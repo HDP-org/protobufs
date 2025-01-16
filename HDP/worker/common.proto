@@ -38,7 +38,7 @@ message Worker {
     }
 
     string id = 1;
-    string name = 2;
+    optional string name = 2;
     Type type = 3;
     Inventory inventory = 4;
     google.protobuf.Timestamp last_seen = 5;
