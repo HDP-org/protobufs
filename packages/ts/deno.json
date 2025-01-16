@@ -1,5 +1,5 @@
 {
-  "name": "@sachaw/HDP_protobufs",
+  "name": "@sachaw/hdp-protobufs",
   "version": "__PACKAGE_VERSION__",
   "exports": {
     ".": "./mod.ts"

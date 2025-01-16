@@ -2,13 +2,4 @@ syntax = "proto3";
 
 package HDP.client;
 
-import "worker/registration.proto";
-
-message UnclaimedWorkers {
-    repeated HDP.worker.registration.Payload workers = 1;
-}
-
-message System {
-    string id = 1;
-    string name = 2;
-}
+import "worker/common.proto";

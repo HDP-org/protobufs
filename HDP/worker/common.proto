@@ -26,9 +26,19 @@ message Peripheral {
     PeripheralType type = 3;
 }
 
-/**
- * List of attached peripheral devices presented during registration
- */
 message Inventory {
     repeated Peripheral peripherals = 1;
+}
+
+
+enum WorkerType {
+    HYDROPONIC = 0;
+    IRRIGATION = 1;
+    WEATHER = 2;
+}
+
+message Worker {
+    string id = 1;
+    WorkerType type = 2;
+    Inventory inventory = 3;
 }
