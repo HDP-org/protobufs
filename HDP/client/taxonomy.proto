@@ -2,8 +2,8 @@ syntax = "proto3";
 package HDP.client.taxonomy;
 
 message TaxonBase {
-    string id = 1;
     string name = 2;
+    string description = 3;
 }
 
 message Species {
