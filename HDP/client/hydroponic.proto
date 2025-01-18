@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package HDP.client.hydroponic;
+
+import "google/protobuf/timestamp.proto";
+
+message Plant {
+    string id = 1;
+    string species_id = 2;
+    google.protobuf.Timestamp date_planted = 3;
+}
+
+message Bank {
+    string id = 1;
+    string name = 2;
+    repeated Plant plants = 3;
+}
+
+message HydroponicSystem {
+    string id = 1;
+    string name = 2;
+    repeated Bank banks = 3;
+}

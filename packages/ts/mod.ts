@@ -1,5 +1,7 @@
 // Client
 export * as Client from "./lib/client/client_pb.ts";
+export * as Hydroponic from "./lib/client/hydroponic_pb.ts";
+export * as Taxonomy from "./lib/client/taxonomy_pb.ts";
 
 // Workers
 export * as HydroponicWorker from "./lib/worker/hydroponic_pb.ts";

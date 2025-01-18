@@ -1,0 +1,41 @@
+syntax = "proto3";
+package HDP.client.taxonomy;
+
+message Species {
+    message GrowthCharacteristics {
+    }
+
+    string id = 1;
+    string scientific_name = 2;
+    string common_name = 3;
+    string description = 4;
+    GrowthCharacteristics growth_characteristics = 5;
+}
+
+message Genus {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    repeated Species species = 4;
+}
+
+message Family {
+    string id = 1;
+    string name = 2;
+    string common_name = 3;
+    string description = 4;
+    repeated Genus genera = 5;
+}
+
+message Order {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    repeated Family families = 4;
+}
+
+message PlantTaxonomy {
+    string id = 1;
+    string version = 2;
+    repeated Order orders = 3;
+}
