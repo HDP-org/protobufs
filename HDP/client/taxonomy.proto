@@ -1,23 +1,21 @@
 syntax = "proto3";
 package HDP.client.taxonomy;
 
-message TaxonBase {
-    string name = 2;
-    string description = 3;
-}
-
 message Species {
-    TaxonBase info = 1;
+    string name = 1;
     string scientific_name = 2;
-    string common_name = 3;
+    string description = 3;
+    string common_name = 4;
 }
 
 message Genus {
-    TaxonBase info = 1;
-    repeated Species species = 2;
+    string name = 1;
+    string description = 2;
+    repeated Species species = 3;
 }
 
 message Family {
-    TaxonBase info = 1;
-    repeated Genus genera = 2;
+    string name = 1;
+    string description = 2;
+    repeated Genus genera = 3;
 }
